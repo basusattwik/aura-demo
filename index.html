@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controllable Mono-to-Stereo Upmixing using Reward-tilted Flows</title>
+<meta name="description" content="Audio samples and demos for our mono-to-stereo upmixing and bandwidth extension method.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>Controllable Mono-to-Stereo Upmixing using Reward-tilted Flows</h1>
+
+  <p class="authors">
+    Sattwik Basu<sup>1&dagger;</sup>,
+    Gautam Bhattacharya<sup>2</sup>,
+    Alan Seefeldt<sup>2</sup>
+  </p>
+  <p class="affiliations">
+    <sup>1</sup>University of Illinois Urbana-Champaign &nbsp;&nbsp;
+    <sup>2</sup>Dolby Laboratories, Inc.
+  </p>
+  <p class="note"><sup>&dagger;</sup>Work done during an internship at Dolby Laboratories, Inc.</p>
+
+  <nav class="links">
+    <!-- TODO: point this at the PDF URL once available -->
+    <a class="btn btn-primary" href="#" id="paper-link">Paper</a>
+    <a class="btn" href="#audio-m2s">Audio Samples</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    We consider the problem of mono-to-stereo audio upmixing: generating a
+    high-fidelity two-channel stereo signal from a single-channel recording.
+    The task is fundamentally ill-posed, i.e., many stereo signals are
+    consistent with a given mono recording. An effective upmixer must therefore
+    generate a realistic, musically coherent stereo image while preserving the
+    underlying audio content. Previous approaches have relied on
+    signal-processing driven decorrelation, ambience extraction and supervised
+    learning, offering limited spatial control or requiring task-specific
+    training. In response, we propose <strong>AURA</strong>
+    (<em><u>A</u>udio <u>U</u>pmixing using <u>R</u>ew<u>a</u>rd-tilted
+    Flows</em>), which reformulates upmixing as a generative inverse problem
+    using a pretrained flow prior. To enable controllable spatial imaging, we
+    design a reward-tilted posterior sampler whose reward penalizes divergences
+    between generated and target distributions of inter-channel cues. Composing
+    forward operators further enables joint restoration and upmixing without
+    retraining or finetuning. Objective and subjective evaluations on real-world
+    music recordings from MUSDB18-HQ demonstrate our method's effectiveness
+    relative to several baselines.
+  </p>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+  <figure>
+    <!-- TODO: copy figures/two_stage_sampler.png into docs/figures/ -->
+    <img src="figures/two_stage_sampler.png" alt="Two-stage sampler overview">
+    <figcaption>
+      TODO: one- or two-sentence caption describing the two-stage sampler.
+    </figcaption>
+  </figure>
+</section>
+
+<section id="audio-m2s">
+  <h2>Mono-to-Stereo Upmixing</h2>
+  <p>
+    TODO: one sentence describing the comparison and the baselines.
+  </p>
+  <div class="placeholder-box">
+    Audio comparison table goes here &mdash; one row per excerpt, one column per system
+    (Reference, Ours, S3A, DiffStereo, Parametric Stereo, Dual&nbsp;Mono).
+  </div>
+</section>
+
+<section id="audio-lpf">
+  <h2>Bandwidth Extension</h2>
+  <p>
+    TODO: one sentence describing the low-pass degradation and restoration task.
+  </p>
+  <div class="placeholder-box">
+    Audio comparison table goes here &mdash; one row per excerpt, columns for
+    Reference, Degraded (low-pass), and Ours.
+  </div>
+</section>
+
+<section id="results">
+  <h2>Listening Test Results</h2>
+  <div class="placeholder-box">
+    TODO: add the subjective results figure and table.
+  </div>
+</section>
+
+<section id="citation">
+  <h2>Citation</h2>
+<pre><code>@inproceedings{TODO2027,
+  title     = {TODO},
+  author    = {TODO},
+  booktitle = {TODO},
+  year      = {2027}
+}</code></pre>
+</section>
+
+<section id="acknowledgements">
+  <h2>Data and Licensing</h2>
+  <p class="small">
+    TODO: add MUSDB18-HQ attribution and per-track license notes before making
+    this page public. Several tracks are licensed CC BY-NC-SA.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p class="small">&copy; 2026 &mdash; TODO author names.</p>
+</footer>
+
+</body>
+</html>
