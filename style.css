@@ -6,6 +6,7 @@
   --border: #e2e2e2;
   --surface: #f7f7f8;
   --maxw: 860px;
+  --wide: 1180px;
 }
 
 * { box-sizing: border-box; }
@@ -23,13 +24,16 @@ body {
 main, .hero, footer { max-width: var(--maxw); margin: 0 auto; }
 
 .hero {
+  max-width: var(--wide);
   text-align: center;
   padding: 3rem 0 2rem;
   border-bottom: 1px solid var(--border);
 }
 
+/* Scales with the viewport so the title never wraps. */
 .hero h1 {
-  font-size: 2.1rem;
+  font-size: clamp(.95rem, 3vw, 2.1rem);
+  white-space: nowrap;
   line-height: 1.25;
   margin: 0 0 .4rem;
   letter-spacing: -0.02em;
@@ -101,6 +105,13 @@ figcaption {
   text-align: left;
 }
 
+.result-table { margin: 0 0 1.2rem; }
+.result-table img { max-width: 100%; }
+
+.method-figure img { max-width: 82%; }
+.math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+.math sub, .math sup { font-style: normal; }
+
 .placeholder, .placeholder-box {
   color: var(--muted);
 }
@@ -130,6 +141,47 @@ th { font-weight: 600; white-space: nowrap; }
 
 audio { width: 190px; height: 34px; display: block; }
 
+/* ---- audio comparison tables ---- */
+
+/* Wide enough for six player columns without squeezing the rest of the page. */
+section.wide { max-width: var(--wide); margin-left: auto; margin-right: auto; }
+section.wide > h2, section.wide > p { max-width: var(--maxw); margin-inline: auto; }
+
+.table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.audio-table { font-size: .85rem; table-layout: fixed; }
+.audio-table th, .audio-table td { border-bottom: 1px solid var(--border); }
+.audio-table tbody tr:last-child td { border-bottom: 0; }
+.audio-table thead th {
+  background: var(--surface);
+  padding: .45rem .4rem;
+  text-align: center;
+  font-size: .8rem;
+  letter-spacing: .01em;
+  white-space: normal;
+}
+.audio-table td { padding: .25rem .4rem; }
+.audio-table tbody tr:nth-child(even) { background: var(--surface); }
+
+.audio-table th:first-child, .audio-table .clip-index {
+  width: 2.6rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.audio-table .clip-index {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.audio-table .ours { background: rgba(37, 99, 235, .06); }
+.audio-table thead th.ours { color: var(--accent); }
+
+.audio-table audio { width: 100%; max-width: 190px; height: 30px; margin: 0 auto; }
+
 pre {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -140,6 +192,9 @@ pre {
 }
 
 .small { font-size: .88rem; color: var(--muted); }
+
+.citation { font-size: .78rem; color: var(--muted); line-height: 1.55; }
+.citation a { color: inherit; }
 
 footer {
   margin-top: 3.5rem;
@@ -159,10 +214,15 @@ footer {
   .btn:hover { background: #26262b; border-color: #3a3a41; }
   .placeholder-box { border-color: #3a3a41; }
   figure img { background: #fff; border-radius: 6px; }
+  .audio-table .ours { background: rgba(96, 141, 245, .10); }
+  audio { color-scheme: dark; }
 }
 
 @media (max-width: 600px) {
-  .hero h1 { font-size: 1.6rem; }
   body { font-size: 16px; }
-  audio { width: 150px; }
+  .audio-table { font-size: .75rem; }
+  .audio-table thead th { font-size: .68rem; padding: .35rem .2rem; }
+  .audio-table td { padding: .2rem .2rem; }
+  .audio-table th:first-child, .audio-table .clip-index { width: 1.6rem; }
+  .audio-table audio { height: 26px; }
 }

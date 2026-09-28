@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Controllable Mono-to-Stereo Upmixing using Reward-tilted Flows</title>
-<meta name="description" content="Audio samples and demos for our mono-to-stereo upmixing and bandwidth extension method.">
+<meta name="description" content="Audio samples and demos for our mono-to-stereo upmixing and joint restoration method.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,8 +24,6 @@
   <p class="note"><sup>&dagger;</sup>Work done during an internship at Dolby Laboratories, Inc.</p>
 
   <nav class="links">
-    <!-- TODO: point this at the PDF URL once available -->
-    <a class="btn btn-primary" href="#" id="paper-link">Paper</a>
     <a class="btn" href="#audio-m2s">Audio Samples</a>
   </nav>
 </header>
@@ -58,67 +56,73 @@
 
 <section id="method">
   <h2>Method</h2>
-  <figure>
-    <!-- TODO: copy figures/two_stage_sampler.png into docs/figures/ -->
-    <img src="figures/two_stage_sampler.png" alt="Two-stage sampler overview">
+  <figure class="method-figure">
+    <img src="figures/two_stage_sampler_compact_7.png" alt="Two-stage sampler overview">
     <figcaption>
-      TODO: one- or two-sentence caption describing the two-stage sampler.
+      We use a <em>decoupled refinement</em> strategy: the flow predicts
+      <span class="math">x&#770;<sub>0</sub></span>, then likelihood and reward
+      gradients, <span class="math">&nabla;&#8466;<sub>lik</sub></span> and
+      <span class="math">&nabla;r<sub>sp</sub></span>, move the sample towards
+      measurement fidelity (orange) and spatial consistency (purple). The
+      optimized <span class="math">x&#770;<sub>0</sub><sup>&dagger;</sup></span>
+      is then renoised and the process is repeated.
     </figcaption>
   </figure>
 </section>
 
-<section id="audio-m2s">
+<section id="audio-m2s" class="wide">
   <h2>Mono-to-Stereo Upmixing</h2>
   <p>
-    TODO: one sentence describing the comparison and the baselines.
+    Each excerpt is upmixed from the mono downmix of the original MUSDB18-HQ
+    stereo mix. All systems are loudness-matched to the reference, so any
+    difference you hear is spatial rather than a level difference.
+    <span class="small">Headphones recommended.</span>
   </p>
-  <div class="placeholder-box">
-    Audio comparison table goes here &mdash; one row per excerpt, one column per system
-    (Reference, Ours, S3A, DiffStereo, Parametric Stereo, Dual&nbsp;Mono).
-  </div>
+  <div class="table-wrap"><div id="best-table"></div></div>
+</section>
+
+<section id="audio-extra" class="wide">
+  <h2>Additional Evaluations</h2>
+  <p>
+    A further set of excerpts, including a comparison against parametric stereo.
+  </p>
+  <figure class="result-table">
+    <img src="figures/website_table1.png" alt="Objective results for the additional evaluation set">
+  </figure>
+  <div class="table-wrap"><div id="mychoice-table"></div></div>
 </section>
 
 <section id="audio-lpf">
-  <h2>Bandwidth Extension</h2>
+  <h2>Joint Mono-to-Stereo and Restoration</h2>
   <p>
-    TODO: one sentence describing the low-pass degradation and restoration task.
+    Here the input is both mono and low-pass filtered, so the model must restore
+    the missing high band and generate the stereo image in a single pass.
   </p>
-  <div class="placeholder-box">
-    Audio comparison table goes here &mdash; one row per excerpt, columns for
-    Reference, Degraded (low-pass), and Ours.
-  </div>
+  <figure class="result-table">
+    <img src="figures/website_table2.png" alt="Objective results for the joint upmixing and restoration task">
+  </figure>
+  <div class="table-wrap"><div id="lpf-table"></div></div>
 </section>
 
-<section id="results">
-  <h2>Listening Test Results</h2>
-  <div class="placeholder-box">
-    TODO: add the subjective results figure and table.
-  </div>
-</section>
-
-<section id="citation">
-  <h2>Citation</h2>
-<pre><code>@inproceedings{TODO2027,
-  title     = {TODO},
-  author    = {TODO},
-  booktitle = {TODO},
-  year      = {2027}
-}</code></pre>
-</section>
-
-<section id="acknowledgements">
-  <h2>Data and Licensing</h2>
-  <p class="small">
-    TODO: add MUSDB18-HQ attribution and per-track license notes before making
-    this page public. Several tracks are licensed CC BY-NC-SA.
+<section id="dataset">
+  <h2>Dataset</h2>
+  <p class="citation">
+    All excerpts are drawn from MUSDB18-HQ:
+    Z. Rafii, A. Liutkus, F.-R. St&ouml;ter, S. I. Mimilakis, and R. Bittner,
+    &ldquo;MUSDB18-HQ &mdash; an uncompressed version of MUSDB18,&rdquo;
+    Zenodo, Aug. 2019.
+    <a href="https://doi.org/10.5281/zenodo.3338373">doi:10.5281/zenodo.3338373</a>
   </p>
 </section>
 
 </main>
 
 <footer>
-  <p class="small">&copy; 2026 &mdash; TODO author names.</p>
+  <p class="small">&copy; 2026 Sattwik Basu, Gautam Bhattacharya, Alan Seefeldt.</p>
 </footer>
+
+<script src="samples.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
