@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Controllable Mono-to-Stereo Upmixing using Reward-tilted Flows</title>
 <meta name="description" content="Audio samples and demos for our mono-to-stereo upmixing and joint restoration method.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,12 +61,11 @@
     <img src="figures/two_stage_sampler_compact_7.png" alt="Two-stage sampler overview">
     <figcaption>
       We use a <em>decoupled refinement</em> strategy: the flow predicts
-      <span class="math">x&#770;<sub>0</sub></span>, then likelihood and reward
-      gradients, <span class="math">&nabla;&#8466;<sub>lik</sub></span> and
-      <span class="math">&nabla;r<sub>sp</sub></span>, move the sample towards
-      measurement fidelity (orange) and spatial consistency (purple). The
-      optimized <span class="math">x&#770;<sub>0</sub><sup>&dagger;</sup></span>
-      is then renoised and the process is repeated.
+      \(\hat{\mathbf{x}}_0\), then likelihood and reward gradients,
+      \(\nabla\mathcal{L}_\mathrm{lik}\) and \(\nabla r_\mathrm{sp}\), move the
+      sample towards measurement fidelity (orange) and spatial consistency
+      (purple). The optimized \(\hat{\mathbf{x}}_0^\dagger\) is then renoised and
+      the process is repeated.
     </figcaption>
   </figure>
 </section>
@@ -123,6 +123,8 @@
 
 <script src="samples.js"></script>
 <script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
 </body>
 </html>
